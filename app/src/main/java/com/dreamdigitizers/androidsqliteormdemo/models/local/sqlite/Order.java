@@ -9,30 +9,35 @@ import com.dreamdigitizers.androidsqliteorm.annotations.OneToMany;
 import com.dreamdigitizers.androidsqliteorm.annotations.PrimaryKey;
 import com.dreamdigitizers.androidsqliteorm.annotations.Table;
 
+import java.util.Date;
 import java.util.List;
 
-@Table(name = "contact")
-public class Contact extends ModelBase {
+@Table(name = "order")
+public class Order extends ModelBase {
     @Column(name = "_id", nullable = false)
     @PrimaryKey(autoIncrement = true)
     private long mId;
 
-    @Column(name = "address", nullable = false)
-    private String mAddress;
-
-    @Column(name = "home_phone", nullable = false)
-    private String mHomePhone;
-
-    @Column(name = "cell_phone")
-    private String mCellPhone;
+    @Column(name = "order_date", nullable = false)
+    private Date mOrderDate;
 
     @Column(name = "user_id", nullable = false)
     @ForeignKey(primaryColumnName = "_id")
     @ManyToOne(fetchType = FetchType.EAGER)
     private User mUser;
 
-    @OneToMany(optional = true, foreignTableClass = ContactProperty.class, foreignColumnName = "contact_id", fetchType = FetchType.EAGER)
-    private List<ContactProperty> mContactProperties;
+    @Column(name = "user_id1", nullable = false)
+    @ForeignKey(primaryColumnName = "_id")
+    @ManyToOne(fetchType = FetchType.EAGER)
+    private User mUser1;
+
+    @Column(name = "user_id2", nullable = false)
+    @ForeignKey(primaryColumnName = "_id")
+    @ManyToOne(fetchType = FetchType.EAGER)
+    private User mUser2;
+
+    @OneToMany(foreignColumnName = "order_id", fetchType = FetchType.EAGER)
+    private List<OrderDetail> mOrderDetails;
 
     public long getId() {
         return this.mId;
@@ -42,28 +47,12 @@ public class Contact extends ModelBase {
         this.mId = pId;
     }
 
-    public String getAddress() {
-        return this.mAddress;
+    public Date getOrderDate() {
+        return this.mOrderDate;
     }
 
-    public void setAddress(String pAddress) {
-        this.mAddress = pAddress;
-    }
-
-    public String getHomePhone() {
-        return this.mHomePhone;
-    }
-
-    public void setHomePhone(String pHomePhone) {
-        this.mHomePhone = pHomePhone;
-    }
-
-    public String getFirstName() {
-        return this.mCellPhone;
-    }
-
-    public void setFirstName(String pCellPhone) {
-        this.mCellPhone = pCellPhone;
+    public void setOrderDate(Date pOrderDate) {
+        this.mOrderDate = pOrderDate;
     }
 
     public User getUser() {
@@ -72,5 +61,13 @@ public class Contact extends ModelBase {
 
     public void setUser(User pUser) {
         this.mUser = pUser;
+    }
+
+    public List<OrderDetail> getOrderDetails() {
+        return this.mOrderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetail> pOrderDetails) {
+        this.mOrderDetails = pOrderDetails;
     }
 }

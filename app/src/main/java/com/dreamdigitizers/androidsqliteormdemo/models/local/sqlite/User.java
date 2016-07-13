@@ -27,6 +27,9 @@ public class User extends ModelBase {
     @OneToMany(optional = true, foreignTableClass = Contact.class, foreignColumnName = "user_id", fetchType = FetchType.EAGER)
     private List<Contact> mContacts;
 
+    @OneToMany(optional = true, foreignTableClass = UserProperty.class, foreignColumnName = "user_id", fetchType = FetchType.EAGER)
+    private List<UserProperty> mUserProperties;
+
     public long getId() {
         return this.mId;
     }
