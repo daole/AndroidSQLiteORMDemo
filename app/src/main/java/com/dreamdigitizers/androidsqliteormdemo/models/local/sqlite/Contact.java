@@ -58,11 +58,11 @@ public class Contact extends ModelBase {
         this.mHomePhone = pHomePhone;
     }
 
-    public String getFirstName() {
+    public String getCellPhone() {
         return this.mCellPhone;
     }
 
-    public void setFirstName(String pCellPhone) {
+    public void setCellPhone(String pCellPhone) {
         this.mCellPhone = pCellPhone;
     }
 

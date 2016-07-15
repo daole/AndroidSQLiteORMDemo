@@ -8,8 +8,8 @@ import com.dreamdigitizers.androidsqliteorm.annotations.ManyToOne;
 import com.dreamdigitizers.androidsqliteorm.annotations.PrimaryKey;
 import com.dreamdigitizers.androidsqliteorm.annotations.Table;
 
-@Table(name = "order_detail")
-public class OrderDetail extends ModelBase {
+@Table(name = "product_order_detail")
+public class ProductOrderDetail extends ModelBase {
     @Column(name = "_id", nullable = false)
     @PrimaryKey(autoIncrement = true)
     private long mId;
@@ -23,7 +23,7 @@ public class OrderDetail extends ModelBase {
     @Column(name = "order_id", nullable = false)
     @ForeignKey(primaryColumnName = "_id")
     @ManyToOne(fetchType = FetchType.EAGER)
-    private Order mOrder;
+    private ProductOrder mProductOrder;
 
     @Column(name = "product_id", nullable = false)
     @ForeignKey(primaryColumnName = "_id")
@@ -54,12 +54,12 @@ public class OrderDetail extends ModelBase {
         this.mQuantity = pQuantity;
     }
 
-    public Order getOrder() {
-        return this.mOrder;
+    public ProductOrder getProductOrder() {
+        return this.mProductOrder;
     }
 
-    public void setOrder(Order pOrder) {
-        this.mOrder = pOrder;
+    public void setProductOrder(ProductOrder pProductOrder) {
+        this.mProductOrder = pProductOrder;
     }
 
     public Product getProduct() {

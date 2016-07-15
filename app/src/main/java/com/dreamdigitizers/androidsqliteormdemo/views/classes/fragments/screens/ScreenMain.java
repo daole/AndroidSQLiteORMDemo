@@ -1,30 +1,31 @@
 package com.dreamdigitizers.androidsqliteormdemo.views.classes.fragments.screens;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.dreamdigitizers.androidbaselibrary.views.classes.fragments.screens.ScreenBase;
-import com.dreamdigitizers.androidsqliteorm.utilities.UtilsQuery;
+import com.dreamdigitizers.androidsqliteorm.Repository;
 import com.dreamdigitizers.androidsqliteormdemo.R;
-import com.dreamdigitizers.androidsqliteormdemo.models.local.sqlite.Order;
-import com.dreamdigitizers.androidsqliteormdemo.views.interfaces.IViewMain;
+import com.dreamdigitizers.androidsqliteormdemo.models.local.sqlite.ProductOrder;
 import com.dreamdigitizers.androidsqliteormdemo.presenters.classes.PresenterFactory;
 import com.dreamdigitizers.androidsqliteormdemo.presenters.interfaces.IPresenterMain;
+import com.dreamdigitizers.androidsqliteormdemo.views.interfaces.IViewMain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ScreenMain extends ScreenBase<IPresenterMain> implements IViewMain {
     @Override
     public void onResume() {
         super.onResume();
-        List<String> projections = new ArrayList<>();
+        /*List<String> projections = new ArrayList<>();
         StringBuilder tableClauseBuilder = new StringBuilder();
-        UtilsQuery.buildProjectionsAndTableClause(projections, tableClauseBuilder, Order.class);
+        UtilsQuery.buildProjectionsAndTableClause(projections, tableClauseBuilder, ProductOrder.class);
         String tableClause = tableClauseBuilder.toString();
-        Log.d("AndroidSQLiteORMDemo", tableClause);
+        Log.d("AndroidSQLiteORMDemo", tableClause);*/
+        Repository repository = Repository.getInstance();
+        List<ProductOrder> list = repository.selectAll(ProductOrder.class);
+        int i = 0;
     }
 
     @Override

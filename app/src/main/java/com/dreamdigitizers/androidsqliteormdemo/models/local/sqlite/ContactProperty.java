@@ -18,4 +18,20 @@ public class ContactProperty extends ModelBase {
     @ForeignKey(primaryColumnName = "_id")
     @ManyToOne(fetchType = FetchType.EAGER)
     private Contact mContact;
+
+    public long getId() {
+        return this.mId;
+    }
+
+    public void setId(long pId) {
+        this.mId = pId;
+    }
+
+    public Contact getContact() {
+        return this.mContact;
+    }
+
+    public void setContact(Contact pContact) {
+        this.mContact = pContact;
+    }
 }

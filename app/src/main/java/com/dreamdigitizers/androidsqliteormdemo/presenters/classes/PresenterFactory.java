@@ -2,8 +2,8 @@ package com.dreamdigitizers.androidsqliteormdemo.presenters.classes;
 
 import com.dreamdigitizers.androidbaselibrary.presenters.interfaces.IPresenterBase;
 import com.dreamdigitizers.androidbaselibrary.views.interfaces.IViewBase;
-import com.dreamdigitizers.androidsqliteormdemo.views.interfaces.IViewMain;
 import com.dreamdigitizers.androidsqliteormdemo.presenters.interfaces.IPresenterMain;
+import com.dreamdigitizers.androidsqliteormdemo.views.interfaces.IViewMain;
 
 public class PresenterFactory {
     public static IPresenterBase createPresenter(Class pPresenterClass, IViewBase pView) {

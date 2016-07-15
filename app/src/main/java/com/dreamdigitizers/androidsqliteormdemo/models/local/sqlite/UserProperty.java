@@ -18,4 +18,20 @@ public class UserProperty extends ModelBase {
     @ForeignKey(primaryColumnName = "_id")
     @ManyToOne(fetchType = FetchType.EAGER)
     private User mUser;
+
+    public long getId() {
+        return this.mId;
+    }
+
+    public void setId(long pId) {
+        this.mId = pId;
+    }
+
+    public User getUser() {
+        return this.mUser;
+    }
+
+    public void setUser(User pUser) {
+        this.mUser = pUser;
+    }
 }

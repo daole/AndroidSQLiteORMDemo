@@ -12,8 +12,8 @@ import com.dreamdigitizers.androidsqliteorm.annotations.Table;
 import java.util.Date;
 import java.util.List;
 
-@Table(name = "order")
-public class Order extends ModelBase {
+@Table(name = "product_order")
+public class ProductOrder extends ModelBase {
     @Column(name = "_id", nullable = false)
     @PrimaryKey(autoIncrement = true)
     private long mId;
@@ -37,7 +37,7 @@ public class Order extends ModelBase {
     private User mUser2;
 
     @OneToMany(foreignColumnName = "order_id", fetchType = FetchType.EAGER)
-    private List<OrderDetail> mOrderDetails;
+    private List<ProductOrderDetail> mProductOrderDetails;
 
     public long getId() {
         return this.mId;
@@ -63,11 +63,27 @@ public class Order extends ModelBase {
         this.mUser = pUser;
     }
 
-    public List<OrderDetail> getOrderDetails() {
-        return this.mOrderDetails;
+    public List<ProductOrderDetail> getProductOrderDetails() {
+        return this.mProductOrderDetails;
     }
 
-    public void setOrderDetails(List<OrderDetail> pOrderDetails) {
-        this.mOrderDetails = pOrderDetails;
+    public void setProductOrderDetails(List<ProductOrderDetail> pProductOrderDetails) {
+        this.mProductOrderDetails = pProductOrderDetails;
+    }
+
+    public User getUser1() {
+        return this.mUser1;
+    }
+
+    public void setUser1(User pUser1) {
+        this.mUser1 = pUser1;
+    }
+
+    public User getUser2() {
+        return this.mUser2;
+    }
+
+    public void setUser2(User pUser2) {
+        this.mUser2 = pUser2;
     }
 }
