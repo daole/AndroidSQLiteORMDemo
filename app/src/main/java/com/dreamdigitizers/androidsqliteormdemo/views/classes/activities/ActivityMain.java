@@ -20,6 +20,8 @@ import com.dreamdigitizers.androidsqliteormdemo.models.local.sqlite.User;
 import com.dreamdigitizers.androidsqliteormdemo.models.local.sqlite.UserProperty;
 import com.dreamdigitizers.androidsqliteormdemo.views.classes.fragments.screens.ScreenMain;
 
+import java.util.Date;
+
 public class ActivityMain extends ActivityBase {
     private CoordinatorLayout mCoordinatorLayout;
 
@@ -60,7 +62,7 @@ public class ActivityMain extends ActivityBase {
 
     private void initializeDatabase() {
         String databaseName = "test";
-        //this.deleteDatabase(databaseName);
+        this.deleteDatabase(databaseName);
         HelperSQLiteConfiguration.SQLiteConfigurationInformation sqliteConfigurationInformation = new HelperSQLiteConfiguration.SQLiteConfigurationInformation();
         sqliteConfigurationInformation.setDatabaseContext(this);
         sqliteConfigurationInformation.setDatabaseName(databaseName);
@@ -80,7 +82,7 @@ public class ActivityMain extends ActivityBase {
         HelperSQLiteConfiguration helperSQLiteConfiguration = new HelperSQLiteConfiguration(sqliteConfigurationInformation);
         Repository.initialize(helperSQLiteConfiguration);
 
-        /*Repository repository = Repository.getInstance();
+        Repository repository = Repository.getInstance();
 
         User user1 = new User();
         user1.setId(1);
@@ -248,16 +250,16 @@ public class ActivityMain extends ActivityBase {
         productOrder1.setId(1);
         productOrder1.setOrderDate(new Date());
         productOrder1.setUser(user1);
-        productOrder1.setUser1(user1);
-        productOrder1.setUser2(user2);
+        //productOrder1.setUser1(user1);
+        //productOrder1.setUser2(user2);
         repository.insert(productOrder1);
 
         ProductOrder productOrder2 = new ProductOrder();
         productOrder2.setId(2);
         productOrder2.setOrderDate(new Date());
         productOrder2.setUser(user2);
-        productOrder2.setUser1(user1);
-        productOrder2.setUser2(user2);
+        //productOrder2.setUser1(user1);
+        //productOrder2.setUser2(user2);
         repository.insert(productOrder2);
 
         ProductOrderDetail productOrderDetail1 = new ProductOrderDetail();
@@ -290,6 +292,6 @@ public class ActivityMain extends ActivityBase {
         productOrderDetail4.setSalePrice(product2.getPrice());
         productOrderDetail4.setQuantity(4);
         productOrderDetail4.setProductOrder(productOrder2);
-        repository.insert(productOrderDetail4);*/
+        repository.insert(productOrderDetail4);
     }
 }

@@ -5,11 +5,8 @@ import com.dreamdigitizers.androidsqliteorm.FetchType;
 import com.dreamdigitizers.androidsqliteorm.annotations.Column;
 import com.dreamdigitizers.androidsqliteorm.annotations.ForeignKey;
 import com.dreamdigitizers.androidsqliteorm.annotations.ManyToOne;
-import com.dreamdigitizers.androidsqliteorm.annotations.OneToMany;
 import com.dreamdigitizers.androidsqliteorm.annotations.PrimaryKey;
 import com.dreamdigitizers.androidsqliteorm.annotations.Table;
-
-import java.util.List;
 
 @Table(name = "contact")
 public class Contact extends ModelBase {
@@ -30,9 +27,6 @@ public class Contact extends ModelBase {
     @ForeignKey(primaryColumnName = "_id")
     @ManyToOne(fetchType = FetchType.EAGER)
     private User mUser;
-
-    @OneToMany(optional = true, foreignTableClass = ContactProperty.class, foreignColumnName = "contact_id", fetchType = FetchType.EAGER)
-    private List<ContactProperty> mContactProperties;
 
     public long getId() {
         return this.mId;
@@ -73,4 +67,17 @@ public class Contact extends ModelBase {
     public void setUser(User pUser) {
         this.mUser = pUser;
     }
+
+    /*
+    @OneToMany(optional = true, foreignTableClass = ContactProperty.class, foreignColumnName = "contact_id", fetchType = FetchType.EAGER)
+    private List<ContactProperty> mContactProperties;
+
+    public List<ContactProperty> getContactProperties() {
+        return this.mContactProperties;
+    }
+
+    public void setContactProperties(List<ContactProperty> pContactProperties) {
+        this.mContactProperties = pContactProperties;
+    }
+    */
 }

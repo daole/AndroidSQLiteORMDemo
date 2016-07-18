@@ -27,8 +27,8 @@ public class User extends ModelBase {
     @OneToMany(optional = true, foreignTableClass = Contact.class, foreignColumnName = "user_id", fetchType = FetchType.EAGER)
     private List<Contact> mContacts;
 
-    @OneToMany(optional = true, foreignTableClass = UserProperty.class, foreignColumnName = "user_id", fetchType = FetchType.EAGER)
-    private List<UserProperty> mUserProperties;
+    @OneToMany(optional = true, foreignTableClass = ProductOrder.class, foreignColumnName = "user_id", fetchType = FetchType.EAGER)
+    private List<ProductOrder> mProductOrders;
 
     public long getId() {
         return this.mId;
@@ -69,4 +69,25 @@ public class User extends ModelBase {
     public void setContacts(List<Contact> pContacts) {
         this.mContacts = pContacts;
     }
+
+    public List<ProductOrder> getProductOrders() {
+        return this.mProductOrders;
+    }
+
+    public void setProductOrders(List<ProductOrder> pProductOrders) {
+        this.mProductOrders = pProductOrders;
+    }
+
+    /*
+    @OneToMany(optional = true, foreignTableClass = UserProperty.class, foreignColumnName = "user_id", fetchType = FetchType.EAGER)
+    private List<UserProperty> mUserProperties;
+
+    public List<UserProperty> getUserProperties() {
+        return this.mUserProperties;
+    }
+
+    public void setUserProperties(List<UserProperty> pUserProperties) {
+        this.mUserProperties = pUserProperties;
+    }
+    */
 }

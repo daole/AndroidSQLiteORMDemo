@@ -26,16 +26,6 @@ public class ProductOrder extends ModelBase {
     @ManyToOne(fetchType = FetchType.EAGER)
     private User mUser;
 
-    @Column(name = "user_id1", nullable = false)
-    @ForeignKey(primaryColumnName = "_id")
-    @ManyToOne(fetchType = FetchType.EAGER)
-    private User mUser1;
-
-    @Column(name = "user_id2", nullable = false)
-    @ForeignKey(primaryColumnName = "_id")
-    @ManyToOne(fetchType = FetchType.EAGER)
-    private User mUser2;
-
     @OneToMany(foreignColumnName = "order_id", fetchType = FetchType.EAGER)
     private List<ProductOrderDetail> mProductOrderDetails;
 
@@ -71,6 +61,17 @@ public class ProductOrder extends ModelBase {
         this.mProductOrderDetails = pProductOrderDetails;
     }
 
+    /*
+    @Column(name = "user_id1", nullable = false)
+    @ForeignKey(primaryColumnName = "_id")
+    @ManyToOne(fetchType = FetchType.EAGER)
+    private User mUser1;
+
+    @Column(name = "user_id2", nullable = false)
+    @ForeignKey(primaryColumnName = "_id")
+    @ManyToOne(fetchType = FetchType.LAZY)
+    private User mUser2;
+
     public User getUser1() {
         return this.mUser1;
     }
@@ -86,4 +87,5 @@ public class ProductOrder extends ModelBase {
     public void setUser2(User pUser2) {
         this.mUser2 = pUser2;
     }
+    */
 }
