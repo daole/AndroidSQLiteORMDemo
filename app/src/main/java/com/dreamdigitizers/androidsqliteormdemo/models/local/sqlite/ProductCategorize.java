@@ -1,10 +1,9 @@
 package com.dreamdigitizers.androidsqliteormdemo.models.local.sqlite;
 
 import com.dreamdigitizers.androidbaselibrary.models.ModelBase;
-import com.dreamdigitizers.androidsqliteorm.FetchType;
 import com.dreamdigitizers.androidsqliteorm.annotations.Column;
-import com.dreamdigitizers.androidsqliteorm.annotations.OneToMany;
 import com.dreamdigitizers.androidsqliteorm.annotations.PrimaryKey;
+import com.dreamdigitizers.androidsqliteorm.annotations.Relationship;
 import com.dreamdigitizers.androidsqliteorm.annotations.Table;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class ProductCategorize extends ModelBase {
     @Column(name = "description")
     private String mDescription;
 
-    @OneToMany(optional = true, foreignTableClass = Product.class, foreignColumnName = "product_categorize_id", fetchType = FetchType.EAGER)
+    @Relationship(optional = true, foreignColumnName = "product_categorize_id")
     private List<Product> mProducts;
 
     public long getId() {

@@ -1,11 +1,9 @@
 package com.dreamdigitizers.androidsqliteormdemo.models.local.sqlite;
 
 import com.dreamdigitizers.androidbaselibrary.models.ModelBase;
-import com.dreamdigitizers.androidsqliteorm.FetchType;
 import com.dreamdigitizers.androidsqliteorm.annotations.Column;
 import com.dreamdigitizers.androidsqliteorm.annotations.ForeignKey;
-import com.dreamdigitizers.androidsqliteorm.annotations.ManyToOne;
-import com.dreamdigitizers.androidsqliteorm.annotations.OneToMany;
+import com.dreamdigitizers.androidsqliteorm.annotations.Relationship;
 import com.dreamdigitizers.androidsqliteorm.annotations.PrimaryKey;
 import com.dreamdigitizers.androidsqliteorm.annotations.Table;
 
@@ -23,10 +21,10 @@ public class ProductOrder extends ModelBase {
 
     @Column(name = "user_id", nullable = false)
     @ForeignKey(primaryColumnName = "_id")
-    @ManyToOne(fetchType = FetchType.EAGER)
+    @Relationship
     private User mUser;
 
-    @OneToMany(foreignColumnName = "order_id", fetchType = FetchType.EAGER)
+    @Relationship(foreignColumnName = "order_id")
     private List<ProductOrderDetail> mProductOrderDetails;
 
     public long getId() {
@@ -64,12 +62,12 @@ public class ProductOrder extends ModelBase {
     /*
     @Column(name = "user_id1", nullable = false)
     @ForeignKey(primaryColumnName = "_id")
-    @ManyToOne(fetchType = FetchType.EAGER)
+    @Relationship
     private User mUser1;
 
     @Column(name = "user_id2", nullable = false)
     @ForeignKey(primaryColumnName = "_id")
-    @ManyToOne(fetchType = FetchType.LAZY)
+    @Relationship
     private User mUser2;
 
     public User getUser1() {

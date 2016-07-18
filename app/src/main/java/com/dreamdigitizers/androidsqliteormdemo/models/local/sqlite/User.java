@@ -1,10 +1,9 @@
 package com.dreamdigitizers.androidsqliteormdemo.models.local.sqlite;
 
 import com.dreamdigitizers.androidbaselibrary.models.ModelBase;
-import com.dreamdigitizers.androidsqliteorm.FetchType;
 import com.dreamdigitizers.androidsqliteorm.annotations.Column;
-import com.dreamdigitizers.androidsqliteorm.annotations.OneToMany;
 import com.dreamdigitizers.androidsqliteorm.annotations.PrimaryKey;
+import com.dreamdigitizers.androidsqliteorm.annotations.Relationship;
 import com.dreamdigitizers.androidsqliteorm.annotations.Table;
 
 import java.util.List;
@@ -24,10 +23,10 @@ public class User extends ModelBase {
     @Column(name = "last_name", nullable = false)
     private String mLastName;
 
-    @OneToMany(optional = true, foreignTableClass = Contact.class, foreignColumnName = "user_id", fetchType = FetchType.EAGER)
+    @Relationship(optional = true, foreignColumnName = "user_id")
     private List<Contact> mContacts;
 
-    @OneToMany(optional = true, foreignTableClass = ProductOrder.class, foreignColumnName = "user_id", fetchType = FetchType.EAGER)
+    @Relationship(optional = true, foreignColumnName = "user_id")
     private List<ProductOrder> mProductOrders;
 
     public long getId() {
@@ -79,7 +78,7 @@ public class User extends ModelBase {
     }
 
     /*
-    @OneToMany(optional = true, foreignTableClass = UserProperty.class, foreignColumnName = "user_id", fetchType = FetchType.EAGER)
+    @Relationship(optional = true, foreignTableClass = UserProperty.class, foreignColumnName = "user_id")
     private List<UserProperty> mUserProperties;
 
     public List<UserProperty> getUserProperties() {

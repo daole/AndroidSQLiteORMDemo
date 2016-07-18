@@ -1,10 +1,9 @@
 package com.dreamdigitizers.androidsqliteormdemo.models.local.sqlite;
 
 import com.dreamdigitizers.androidbaselibrary.models.ModelBase;
-import com.dreamdigitizers.androidsqliteorm.FetchType;
 import com.dreamdigitizers.androidsqliteorm.annotations.Column;
 import com.dreamdigitizers.androidsqliteorm.annotations.ForeignKey;
-import com.dreamdigitizers.androidsqliteorm.annotations.ManyToOne;
+import com.dreamdigitizers.androidsqliteorm.annotations.Relationship;
 import com.dreamdigitizers.androidsqliteorm.annotations.PrimaryKey;
 import com.dreamdigitizers.androidsqliteorm.annotations.Table;
 
@@ -22,12 +21,12 @@ public class ProductOrderDetail extends ModelBase {
 
     @Column(name = "order_id", nullable = false)
     @ForeignKey(primaryColumnName = "_id")
-    @ManyToOne(fetchType = FetchType.EAGER)
+    @Relationship
     private ProductOrder mProductOrder;
 
     @Column(name = "product_id", nullable = false)
     @ForeignKey(primaryColumnName = "_id")
-    @ManyToOne(fetchType = FetchType.EAGER)
+    @Relationship
     private Product mProduct;
 
     public long getId() {
