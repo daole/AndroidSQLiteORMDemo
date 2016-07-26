@@ -68,7 +68,7 @@ public class Contact extends ModelBase {
     }
 
     /*
-    @OneToMany(optional = true, foreignTableClass = ContactProperty.class, foreignColumnName = "contact_id", fetchType = FetchType.EAGER)
+    @Relationship(optional = true, foreignTableClass = ContactProperty.class, foreignColumnName = "contact_id")
     private List<ContactProperty> mContactProperties;
 
     public List<ContactProperty> getContactProperties() {
